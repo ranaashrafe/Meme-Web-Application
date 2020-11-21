@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MemeWebApplication.Models.Template>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FilmName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilmName)
+            </td>
+            <td>
+                <img src="~/uploads/@Html.DisplayFor(modelItem => item.Image)"
+                     class="thumbnail"
+                     style="width:200px;height:200px;" />
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Fav" asp-route-id="@item.ID">Favourit</a> |
+                <a asp-action="Download" asp-route-id="@item.ID">Download</a> |
+
+                
+                
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
